@@ -4,19 +4,22 @@ import * as Animatable from "react-native-animatable";
 import { useTheme } from "../context/ThemeContext";
 import { useMMKVString } from "react-native-mmkv";
 import { Text } from "@react-navigation/elements";
-import { getFontSize } from "../utils/font";
+import { getFontSize } from "../utils/fontResponsiveness";
 
 export function ThemeSwitch() {
   const { theme, setThemeMode } = useTheme();
   const [themeMode, setValue] = useMMKVString("settings.themeMode");
 
-  const isLight = themeMode === "light";
+  const isLight = themeMode === "light";  
 
   const toggleSwitch = () => {
     const nextMode = isLight ? "dark" : "light";
     setValue(nextMode);
     setThemeMode(nextMode);
   };
+
+  console.log('themeMode', themeMode);
+  
 
   return (
     <Animatable.View

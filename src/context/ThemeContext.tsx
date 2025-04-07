@@ -7,7 +7,7 @@ import React, {
   useEffect,
 } from "react";
 import { lightTheme, darkTheme, CustomTheme } from "../../theme";
-import { Appearance, useColorScheme } from "react-native";
+import { Appearance } from "react-native";
 import { storage } from "../storage/MMKV";
 
 interface ThemeContextProps {
@@ -23,14 +23,18 @@ interface ThemeProviderProps {
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const themeModeStorage = storage.getString("settings.themeMode");
-  const systemTheme = useColorScheme();
 
-  const [isDarkMode, setIsDarkMode] = useState(themeModeStorage ?? systemTheme);
+  const [isDarkMode, setIsDarkMode] = useState(themeModeStorage ?? 'light');
   const setThemeMode = (mode: "dark" | "light") => setIsDarkMode(mode);
 
   useEffect(() => {
+    if(!themeModeStorage) {
+      storage.set("settings.themeMode", isDarkMode);
+    }}, [])
+
+  useEffect(() => {
     const listener = Appearance.addChangeListener(({ colorScheme }) => {
-      setIsDarkMode(colorScheme);
+      setIsDarkMode(colorScheme ?? 'light');
     });
 
     // Cleanup the listener when component unmounts

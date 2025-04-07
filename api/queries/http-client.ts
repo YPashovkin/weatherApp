@@ -6,7 +6,7 @@ export const httpClient = axios.create({
     'Content-type': 'application/json',
   },
   params: {
-    key: '', // Replace with your actual API key 
+    key: '7203dc72e5f04453b7c112534250404', // Replace with your actual API key 
   },
   timeout: 10000,
 });

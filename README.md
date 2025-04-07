@@ -12,12 +12,6 @@ add the api key to params
   npm install
   ```
 
-- Start the development server:
-
-  ```sh
-  npm start
-  ```
-
 - Build and run iOS and Android development builds:
 
   ```sh

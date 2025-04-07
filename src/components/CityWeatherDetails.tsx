@@ -3,7 +3,7 @@ import { View, Text, Image, StyleSheet } from "react-native";
 import * as Animatable from "react-native-animatable";
 import { useTheme } from "../context/ThemeContext";
 import { CityWeatherResponse } from "../../api/queries/useCityWeatherQueryData";
-import { getFontSize } from "../utils/font";
+import { getFontSize } from "../utils/fontResponsiveness";
 
 export const CityWeatherDetails = ({
   location,

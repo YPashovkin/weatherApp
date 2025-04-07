@@ -3,7 +3,7 @@ import { View, Text, Image, ScrollView, StyleSheet } from "react-native";
 import * as Animatable from "react-native-animatable";
 import { useTheme } from "../context/ThemeContext";
 import { ForecastCityWeatherProps } from "../../api/queries/useCityWeatherQueryData";
-import { getFontSize } from "../utils/font";
+import { getFontSize } from "../utils/fontResponsiveness";
 
 export const ForecastCityWeather = ({ forecast }: ForecastCityWeatherProps) => {
   const { theme } = useTheme();
@@ -16,7 +16,7 @@ export const ForecastCityWeather = ({ forecast }: ForecastCityWeatherProps) => {
         contentContainerStyle={{ paddingHorizontal: 16 }}
       >
         {forecast?.forecastday?.map((days, index) => {
-          const date = new Date(days.date);
+          const date = new Date(days?.date);
           const dayName = date.toLocaleDateString("ru", { weekday: "long" });
 
           return (
@@ -29,7 +29,7 @@ export const ForecastCityWeather = ({ forecast }: ForecastCityWeatherProps) => {
                 styles.forecastCard,
                 { backgroundColor: theme.colors.card },
               ]}
-              accessibilityLabel={`Прогноз на ${dayName}, ${days.day.avgtemp_c} градусов, ${days.day.condition.text}`}
+              accessibilityLabel={`Прогноз на ${dayName}, ${days?.day?.maxtemp_c} градусов, ${days.day.condition.text}`}
               accessibilityRole="summary"
             >
               <Image
@@ -41,7 +41,7 @@ export const ForecastCityWeather = ({ forecast }: ForecastCityWeatherProps) => {
                 {dayName}
               </Text>
               <Text style={[styles.avgTempText, { color: theme.colors.text }]}>
-                {`${days.day.avgtemp_c && Math.round(days.day.avgtemp_c)} °C`}
+                {`${days?.day?.maxtemp_c && Math.round(days.day.maxtemp_c)} °C`}
               </Text>
             </Animatable.View>
           );

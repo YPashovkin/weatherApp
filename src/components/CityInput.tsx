@@ -5,7 +5,7 @@ import { SearchIcon } from "../assets/icons";
 import { inputTextValidation } from "../utils/validation";
 import Toast from 'react-native-toast-message';
 import * as Animatable from 'react-native-animatable';
-import { getFontSize } from "../utils/font";
+import { getFontSize } from "../utils/fontResponsiveness";
 import { useNavigation } from "@react-navigation/native";
 
 export const CityInput = () => {
