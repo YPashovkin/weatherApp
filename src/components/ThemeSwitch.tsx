@@ -16,10 +16,7 @@ export function ThemeSwitch() {
     const nextMode = isLight ? "dark" : "light";
     setValue(nextMode);
     setThemeMode(nextMode);
-  };
-
-  console.log('themeMode', themeMode);
-  
+  };  
 
   return (
     <Animatable.View

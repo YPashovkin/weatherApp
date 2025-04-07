@@ -1,8 +1,8 @@
-## Add the api key
+## Add an api key
 
-- Go to api/http-client
+- Go to the file api/http-client
 
-add the api key to params
+add an api key to params
 
 ## Running the app
 
